@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://use.fontawesome.com/55d35c85cb.js"></script>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<title>Reigstration</title>
+</head>
+<body style= "background-image: url(images/esport.jpg);">	
+	<div style='width: 25%' class="container">
+    	<form style="color: white" method="post" class="form-signin" role="form">
+    	{% csrf_token %}
+        	<h2 class="form-signin-heading" style="color:black">Please registr</h2>
+            <div style="width: 100%" class='input-group'>
+                <span style="width: 39px" class="input-group-addon"><i class="fa fa-steam-square"></i></span>
+        	    <input type="text" id='pers' name='pers'  class="form-control" placeholder="Entre votre name" required autofocus>
+        	</div></br>
+            <div class='input-group'>
+                <span class="input-group-addon"><i class="fa fa-key fa"></i></span>
+                <input type="text" name='idha' id='idha' class="form-control" placeholder="Votre id" required>
+            </div></br>
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
+        </form>
+        <i class="fa fa-steam-square fa-5x" aria-hidden="true"></i>
+    </div>
+</body>
+</html>

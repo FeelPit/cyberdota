@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<title>Reigstration</title>
+</head>
+<body>	
+	<div style='width: 25%' class="container">
+    	<form style="color: white" method="post" class="form-signin" role="form">
+    	{% csrf_token %}
+        	<h2 class="form-signin-heading" style="color:black">Please registr</h2>
+            <div style="width: 100%" class='input-group'>
+                <span style="width: 39px" class="input-group-addon"><i class="fas fa-id-card"></i></span>
+        	    <input type="text" id='idha' name='idha'  class="form-control" placeholder="Your steam-id" required autofocus>
+        	</div></br>
+            <div class='input-group'>
+                <span class="input-group-addon"><i class="fas fa-key fa"></i></span>
+                <input type="password" name='password' id='password' class="form-control" placeholder="Your password" required>
+            </div></br>
+            <div style="width: 100%" class='input-group'>
+              <span style="width: 39px" class="input-group-addon"><i class="far fa-flag"></i></span>
+              <input type="text" id='lang' name='lang'  class="form-control" placeholder="Your language" required>
+            </div></br>
+            <label for='region' style="color:black;">Your region</label>
+            <div class='input-group'>
+                <span class="input-group-addon"><i class="fas fa-globe"></i></span>
+                    <select class="form-control" id="region" name='region' required'>
+                      <option>CIS</option>
+                      <option>Europe</option>
+                      <option>N.America</option>
+                      <option>S.America</option>
+                      <option>N.Asia</option>
+                      <option>S.Asia</option>
+                      <option>Africa</option>
+                    </select>
+            </div></br>
+            <label for='rank' style="color:black;">Your rank</label>
+            <div class='input-group'>
+                <span class="input-group-addon"><i class="fas fa-chess-king"></i></span>
+                    <select class="form-control" id="rank" name='rank' required'>
+                      <option>Herald</option>
+                      <option>Guardian</option>
+                      <option>Crusader</option>
+                      <option>Archon</option>
+                      <option>Legend</option>
+                      <option>Ancient</option>
+                      <option>Divine</option>
+                    </select>
+            </div></br>
+            <label for='role' style="color:black;">Your role</label>
+            <div class='input-group'>
+                <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                <select class="form-control" id="role" name="role" required="">
+                  <option>Carry</option>
+                  <option>Support</option>
+                  <option>Roam</option>
+                  <option>Mid</option>
+                  <option>Hardline</option>
+                </select>
+            </div></br>
+            <div class='input-group'>
+
+            </div></br>
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
+        </form>
+        <i class="fa fa-steam-square fa-5x" aria-hidden="true"></i>
+    </div>
+</body>
+</html>

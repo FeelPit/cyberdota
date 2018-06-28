@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://use.fontawesome.com/55d35c85cb.js"></script>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<title>Reigstration</title>
+</head>
+<body style= "background-image: url(images/esport.jpg);">	
+	<div style='width: 25%' class="container">
+    	<form style="color: white" method="post" class="form-signin" role="form">
+    	{% csrf_token %}
+        	<h2 class="form-signin-heading" style="color:black">Please registr</h2>
+            <div style="width: 100%" class='input-group'>
+                <span style="width: 39px" class="input-group-addon"><i class="fa fa-steam-square"></i></span>
+        	    <input type="text" id='name' name='name'  class="form-control" placeholder="Entre votre name" required autofocus>
+        	</div></br>
+            <div style="width: 100%" class='input-group'>
+                <span style="width: 39px" class="input-group-addon"><i class="fa fa-steam-square"></i></span>
+                <input type="text" id='region' name='region'  class="form-control" placeholder="Entre votre region" required autofocus>
+            </div></br>
+            <div style="width: 100%" class='input-group'>
+                <span style="width: 39px" class="input-group-addon"><i class="fa fa-steam-square"></i></span>
+                <input type="text" id='lang' name='lang'  class="form-control" placeholder="Entre votre language" required autofocus>
+            </div></br>
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
+        </form>
+        <i class="fa fa-steam-square fa-5x" aria-hidden="true"></i>
+    </div>
+</body>
