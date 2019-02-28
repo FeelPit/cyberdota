@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+	<head>
+		<title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'cyberdota/css/flagicon.css' %}" >
+        <link rel="stylesheet" type="text/css" href="{% static 'cyberdota/css/stylesheets/dota2minimapheroes.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>		
+	</head>
+	<style type="text/css">
+		html,body{
+			height: 100%;
+			margin: 0;
+			background-color: #1C242D;
+			font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+		}
+		.navlink{
+
+		}
+		.icons{
+			color:#409EFF;
+		}	
+	</style>
+	<body>
+		<div id="b">
+			<el-menu
+			  :default-active="activeIndex"
+			  class="el-menu-demo"
+			  mode="horizontal"
+			  @select="handleSelect"
+			  background-color="#212529"
+			  text-color="#6c757d"
+			  active-text-color="#409EFF">
+			  <el-menu-item on:click = "home" index="0" style="font-size: 32px; color: white"><a>TM</a></el-menu-item>
+			  <el-menu-item @click = "home" index="1" style="font-size: 16px"> <i class="fas fa-home icons" style="color: #409EFF"></i> <a class="navlink" style="text-decoration: none; height: 30px" href="http://127.0.0.1:8090/main_menu">Home</a></el-menu-item>
+			  <el-menu-item @click = "profile" index="2" style="font-size: 16px"> <i class="fas fa-user" style="color: #409EFF"></i> <a class="navlink" style="text-decoration: none" href="http://127.0.0.1:8090/main"><span>Profile</span></a></el-menu-item>
+			  <el-menu-item @click = "search" index="3" style="font-size: 16px"> <i class="fas fa-search" style="color: #409EFF"></i> <a class="navlink" style="text-decoration: none" href="http://127.0.0.1:8090/search"><span>Search</span></a></el-menu-item>
+			  <el-menu-item @click = "exit" index="4" style="font-size: 16px; color:#F56C6C"> <a class="navlink" style="text-decoration: none" href="http://127.0.0.1:8090/exit"><span>Exit</span></a></el-menu-item>
+			</el-menu>
+		</div>
+
+		<script>
+			var app = new Vue({
+				el: '#b',
+				data: {
+					activeIndex: '1'
+				},
+				methods: {
+				      handleSelect(key, keyPath) {
+			        console.log(key, keyPath);
+			      },
+			      home: function(){
+			      	window.location.replace("http://127.0.0.1:8090/main_menu")
+			      },
+			      profile: function(){
+			      	window.location.replace("http://127.0.0.1:8090/main")
+			      },
+			      search: function(){
+			      	window.location.replace("http://127.0.0.1:8090/search")
+			      },
+			      exit: function(){
+			      	window.location.replace("http://127.0.0.1:8090/exit")
+			      }				      				      				      				
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<title> Match #1231231 </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'cyberdota/css/flagicon.css' %}" >
+        <link rel="stylesheet" type="text/css" href="{% static 'cyberdota/css/stylesheets/dota2minimapheroes.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	</head>
+	<style>
+		html,body{
+			height: 100%;
+			margin: 0;
+			background-color: #1C242D;
+			font-family: Poppins;
+		}
+		#exit{
+			color: aqua;
+			text-decoration: none;
+		}
+		#data, #con{
+			padding-top: 5%;
+		}
+		#teams{
+			padding:2%;
+		}
+	</style>
+	<body>
+		<div id="b">
+			<navigation></navigation>
+		</div>
+		<div class="container-fluid" id="data">
+			<div class="container-fluid" id = "con">
+				<div class="row">
+					<div class="col-lg- col-sm col-md">
+						<h1 style="color: #A9CF54; margin-left: 40%">Radiant Wins!</h1>
+						<h5>35:50</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg- col-sm col-md" id='teams'>
+						<table class="table table-hover table-striped table-dark" id="games">
+							<thead>
+								<tr class="bg-success">
+									<th>Hero</th>
+									<th>Name</th>
+									<th style="color: #FBB829">NW</th>
+									<th><span style="color: #FBB829">GPM</span>/XPM</th>
+									<th>Damage</th>
+									<th style="width: 100px">KDA</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for player in radiant %}
+									{% if player.name != Anonim %}
+									<tr onclick="document.location = 'http://127.0.0.1:8090/profile/{{player.id}}'">
+										<td><i class="d2mh hero-{{ player.hero }}"></td>
+										<td><span style="color:white">{{player.name}}</span> </td>
+										<td><span style="color: #FBB829"> {{player.nw}}</span></td>
+										<td><span style="color: #FBB829">{{player.gpm}}</span>/<span>{{player.xpm}}</span></td>
+										<td>{{player.damage}}</td>
+										<td>
+											<span style="color: #A9CF54">{{player.kills}}</span>/
+										<span style="color: #C23C2A">{{player.deaths}}</span>/
+										<span style="color: rgba(255,255,255,0.6)">{{player.assists}}</span>
+										</td>
+									</tr>
+									{% else %}
+									<tr>
+										<td><i class="d2mh hero-{{ player.hero }}"></td>
+										<td><span style="color:white">{{player.name}}</span> </td>
+										<td><span style="color: #FBB829"> {{player.nw}}</span></td>
+										<td><span style="color: #FBB829">{{player.gpm}}</span>/<span>{{player.xpm}}</span></td>
+										<td>{{player.damage}}</td>
+										<td>
+											<span style="color: #A9CF54">{{player.kills}}</span>/
+										<span style="color: #C23C2A">{{player.deaths}}</span>/
+										<span style="color: rgba(255,255,255,0.6)">{{player.assists}}</span>
+										</td>
+									</tr>
+									{%endif%}									
+								{% endfor %}								
+							</tbody>	
+						</table>
+					</div>
+					<div class="col-lg- col-sm col-md" id='teams'>
+						<table class="table table-hover table-striped table-dark" id="games">
+							<thead>
+								<tr class="bg-danger">
+									<th>Hero</th>
+									<th>Name</th>
+									<th style="color: #FBB829">NW</th>
+									<th><span style="color: #FBB829">GPM</span>/XPM</th>
+									<th>Damage</th>
+									<th style="width: 100px">KDA</th>
+								</tr>
+							</thead>							
+							<tbody>
+								{% for player in dire %}
+									{% if player.name != Anonim %}
+									<tr onclick="document.location = 'http://127.0.0.1:8090/profile/{{player.id}}'">
+										<td><i class="d2mh hero-{{ player.hero }}"></td>
+										<td><span style="color:white">{{player.name}}</span> </td>
+										<td><span style="color: #FBB829"> {{player.nw}}</span></td>
+										<td><span style="color: #FBB829">{{player.gpm}}</span>/<span>{{player.xpm}}</span></td>
+										<td>{{player.damage}}</td>
+										<td>
+											<span style="color: #A9CF54">{{player.kills}}</span>/
+										<span style="color: #C23C2A">{{player.deaths}}</span>/
+										<span style="color: rgba(255,255,255,0.6)">{{player.assists}}</span>
+										</td>
+									</tr>
+									{% else %}
+									<tr>
+										<td><i class="d2mh hero-{{ player.hero }}"></td>
+										<td><span style="color:white">{{player.name}}</span> </td>
+										<td><span style="color: #FBB829"> {{player.nw}}</span></td>
+										<td><span style="color: #FBB829">{{player.gpm}}</span>/<span>{{player.xpm}}</span></td>
+										<td>{{player.damage}}</td>
+										<td>
+											<span style="color: #A9CF54">{{player.kills}}</span>/
+										<span style="color: #C23C2A">{{player.deaths}}</span>/
+										<span style="color: rgba(255,255,255,0.6)">{{player.assists}}</span>
+										</td>
+									</tr>
+									{%endif%}
+								{%endfor%}									
+							</tbody>	
+						</table>						
+					</div>
+				</div>						
+			</div>
+		</div>
+	<script src="{% static 'main.js' %}"></script>			
+	</body>	
+</html>	

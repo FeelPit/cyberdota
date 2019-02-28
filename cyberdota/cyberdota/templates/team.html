@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<title>Search teammates</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="{% static 'cyberdota/css/flagicon.css' %}" >
+		<link rel="stylesheet" type="text/css" href="{% static 'cyberdota/css/stylesheets/dota2minimapheroes.css' %}">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
+	</head>
+	<style>
+		html,body{
+			height: 100%;
+			margin: 0;
+			background-color: #1C242D;
+			font-family: Poppins;
+			color: white;
+		}
+		#exit{
+			color: aqua;
+			text-decoration: none;
+		}
+		#big{
+			padding-top: 10%;
+			padding-left: 5%;
+			padding-right: 5%; 
+			padding-bottom:5%;
+			height: 100%;
+		}
+		#team_info{
+			height: 40%;
+		}
+		#name{
+			margin-top:2%;
+			margin-left:2%;
+			font-size: 20px; 
+		}
+		#s{
+			margin-left: 2%;
+		}
+	</style>
+	<body>
+		<script type="text/javascript">
+			$(function () {
+  				$('[data-toggle="tooltip"]').tooltip()
+  				})	
+		</script>
+		<nav class="navbar navbar-expand-lg navbar-expand-sm fixed-top navbar-dark bg-dark">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+		    </button>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+				<a class="navbar-brand" href="#">TM</a>
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">	
+					<li class="nav-item">
+						<a class="nav-link" href="http://127.0.0.1:8090/main">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Search</a>
+					</li>
+				</ul>
+				<button type="button" class="btn btn-outline-info">
+					<a href="https://vk.com" id="exit">
+						Exit
+					</a>
+				</button>	
+			</div>
+		</nav>
+		<div class="container-fluid" id="big">
+			<div class="row" id="team_info" style="background: #2E3740;">
+				<div class="col-sm col-md col-lg">
+					<div class="row"></div>
+					<div class="row" id="name">
+						<div class="col-sm col-md col-lg">
+							<img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/42/425e600283501abdae92404b3b4ca4bc20ab4d04_full.jpg" style="width: 160px">
+							<a style="padding-left: 5%">
+								<span class="flag-icon flag-icon-ru" id="flag"></span>
+								<span>{{team_info.name}}</span>
+							</a>							
+						</div>	
+					</div>
+					<div class="row"></div>
+				</div>
+			</div>
+			<div class="row" id="team_info" style="margin-top: 10%;">
+				{% for player in players_info %}
+				<div class="col-sm col-md col-lg" style="background: #2E3740; width: 46%" id = "s" style="margin-left: 0">
+					<div class="row"></div>
+					<div class="row" id="name">
+						<div class="col-sm col-md col-lg">
+							<a style="padding-left: 5%">
+								<span class="flag-icon flag-icon-{{player.region}}" id="flag"></span>
+								<span style="padding-left: 5px">{{player.name}}</span>
+							</a>						
+							<a style="padding-left: 5%">
+								<span style="padding-left: 5px">{{player.rank}}</span>
+							</a>							
+						</div>	
+					</div>
+					<div class="row"></div>
+				</div>
+				{% endfor %}
+				{% if gr == 3 %}
+				<div class="col-sm col-md col-lg" style="background: #2E3740; width: 46%" id = "s">
+					<div class="row"></div>
+					<div class="row" id="name">
+						<div class="col-sm col-md col-lg">
+							<a style="padding-left: 5%">
+								<span style="padding-left: 5px">?</span>
+							</a>													
+						</div>	
+					</div>
+					<div class="row"></div>
+				</div>
+				<div class="col-sm col-md col-lg" style="background: #2E3740; width: 46%" id = "s">
+				<div class="row"></div>
+					<div class="row" id="name">
+						<div class="col-sm col-md col-lg">
+							<a style="padding-left: 5%">
+								<span style="padding-left: 5px">?</span>
+							</a>													
+						</div>	
+					</div>
+					<div class="row"></div>
+				</div>
+				{% elif gr == 4 %}
+				<div class="col-sm col-md col-lg" style="background: #2E3740; width: 46%" id = "s">
+					<div class="row"></div>
+					<div class="row" id="name">
+						<div class="col-sm col-md col-lg">
+							<a style="padding-left: 5%">
+								<span style="padding-left: 5px">?</span>
+							</a>													
+						</div>	
+					</div>
+					<div class="row"></div>
+				</div>
+				{% endif %}																							
+			</div>			
+		</div>
+</body>
+</html>

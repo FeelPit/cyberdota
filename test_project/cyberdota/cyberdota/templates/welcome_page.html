@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	{% load static %}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+		<script src="http://bootstraptema.ru/plugins/2016/shieldui/script.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	</head>
+	<style type="text/css">
+		html,body{
+			height: 100%;
+			font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+		}
+		body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+		.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+		.fa-anchor,.fa-coffee {font-size:200px}
+		#page{
+			display: flex;
+			flex-direction: column;
+			height: 50%;
+			width: 100%;
+			padding: 0;
+		}
+		#first_part{
+			  position: relative;
+			  background-color: black;
+			  height: 100%;
+			  min-height: 25rem;
+			  width: 100%;
+			  overflow: hidden;
+		}
+		video{
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  min-width: 100%;
+			  min-height: 100%;
+			  width: auto;
+			  height: auto;
+			  z-index: 0;
+			  -ms-transform: translateX(-50%) translateY(-50%);
+			  -moz-transform: translateX(-50%) translateY(-50%);
+			  -webkit-transform: translateX(-50%) translateY(-50%);
+			  transform: translateX(-50%) translateY(-50%);		
+		}
+		#tx{
+			position: relative;
+		}
+		#second_part{
+			height: 100%;
+			display: flex;
+			flex-direction: row;
+		}
+		#text{
+			margin:5px;
+		}
+		#qr{
+			display: flex;
+			flex-direction: row;			
+		}	
+	</style>
+	<body class="bg-dark">
+		<header id="first_part">
+			<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+				<source src="{% static 'welcome_video.mp4' %}" type="video/mp4">
+			</video>
+			<div class="container h-100" id="tx">
+			  <div class="d-flex h-100 text-center align-items-center">
+			    <div class="w-100 text-white">
+			      <h1 class="display-3">WeAre <i class="fas fa-globe text-danger"></i></h1>
+			    </div>
+			  </div>
+			</div>			
+		</header>
+		<div class="container-fluid" id="page" style="height: 210%">
+			<div class="w3-row-padding w3-padding-64 w3-container bg-white" style="order: 1; flex-grow: 2">
+			  <div class="w3-content">
+			    <div class="w3-twothird">
+			      <h1>Для игроков</h1>
+			      <h5 class="w3-padding-32">Наша основная цель - обеспечить быстрый и качественный поиск игроков и команд подходящих вашим критериям.</h5>
+
+			      <p class="w3-text-grey">Наш алгоритм позволяет найти команду, соответствующую вашему уровню игры,  роли, региону и языку. Для этого мы используем данные вашего Steam-аккаунта. <br> 
+			      Для того, чтобы найти команду, вам достаточно нажать лишь пару кнопок.<br> 
+			      Также, вы можете следить за своими достижениями, доходами и новостями из мира киберспорта.
+			      </p>
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Second Grid -->
+			<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" style="order: 1; flex-grow: 2">
+			  <div class="w3-content">
+
+			    <div class="w3-twothird">
+			      <h1>Для команд</h1>
+			      <h5 class="w3-padding-32">Управление командой просто как никогда.</h5>
+			        
+			      <p class="w3-text-grey">Наш проект позволяет очень быстро найти игроков, тренеров и менеджеров в команду.
+			      Команды больше не будут зависеть от одного спонсора. В вас смогут вкладывать деньги большое количество организаций и простых людей, которые будут получать дивиденды в виде процентов от призовых на основе открытого алгоритма.<br> 
+			      Команды имеют свой рейтинг, который позволяет подниматься в топ самых перспективных команд. Рейтинг обновляется постоянно.<br> Тренера могут отслеживать последние игры своей команды и создавать тактики. <br>
+			      Менеджеры могут искать турниры через нашу платформу.
+			      </p>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="w3-row-padding w3-padding-64 w3-container bg-white" style="order: 1; flex-grow: 2">
+			  <div class="w3-content">
+
+			    <div class="w3-twothird">
+			      <h1>Для организаций</h1>
+			      <h5 class="w3-padding-32">Вкладывайте деньги в несколько команд сразу и принимайте участие в их развитии.</h5>
+			      <p class="w3-text-grey">Вы можете вложиться в несколько команд сразу и предоставить им свободу развития. Для того, чтобы уменьшить риски, существует топ самых перспективных команд - это команды с самым высоким рейтингом.<br> 
+			      Выбор за вами!
+			      </p>
+			    </div>
+			  </div>
+			</div>
+			<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" style="order: 1; flex-grow: 1">
+			  <div class="w3-content" style="display: flex; flex-direction: row;">
+			    	<div class="w3-twothird" style="flex-grow: 1">
+			      		<h1>Осуществи свою мечту.</h1>
+			    	</div>
+			    	<div style="flex-grow: 3">
+						<form method="get" action="http://127.0.0.1:8090/login" style="margin-left:35px">
+					    	<button class="btn btn-success"><a>Войдите</a></button>
+						</form>
+							<h5 style="margin-left:60px; margin-top: 9px">Или</h5>
+						<form method="get" action="http://127.0.0.1:8090/reg">
+						<button class="btn btn-danger"><a>Зарегистрируйтесь</a></button>
+						</form>
+					</div>			    
+			  </div>
+			</div>
+		</div>
+		<footer class="footer bg-dark" style="height: 150px; display: flex; flex-direction: row;">
+				<div style="padding-left: 15px; padding-top: 6px; order: 1; flex-grow: 1">
+					<h5 class="text-light" >Adress:</h5> 
+					<address class="text-light"><span><strong>Lycée Joffre</strong>, </br> Montpellier, France <br> <strong>E-mail:</strong> <br> <a href="#">test@gmail.com</a></span></address>
+				</div>	 
+				<div style="order: 3; flex-grow: 2; padding-left: 15px; padding-top: 6px;">
+					<h5 class="text-light" >Social medias:</h5>
+					<span style="font-size: 50px" class="text-primary"><i class="fab fa-twitter-square"></i></span>
+				</div>  	
+		</footer>		
+	</body>
+</html>

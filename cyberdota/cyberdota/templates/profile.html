@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<title>Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'cyberdota/css/flagicon.css' %}" >
+        <link rel="stylesheet" type="text/css" href="{% static 'cyberdota/css/stylesheets/dota2minimapheroes.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+	</head>
+	<style type="text/css">
+		html,body{
+			height: 100%;
+			margin: 0;
+			background-color: #343a40;
+			font-family: Poppins;
+		}
+		#con{
+			padding-top: 5%;	
+		}
+		#exit{
+			color:aqua;
+			text-decoration: none;
+		}
+		#data{
+			padding-top: 5%;
+		}
+		h2{
+			color:white;
+			padding-top: 15%;
+			float: right;
+		}
+		#avatar{
+			float:right;
+			width: 150px;
+			height: 150px;
+			border: 2px solid white;
+		}
+		#rank{
+			width: 70px;
+			height: 70px;
+			float: left;
+		}
+		#wl{
+			color: white
+		}
+		#invite{
+			text-decoration: none;
+			color:#A9CF54;
+		}
+		#hero{
+			height: 24px;
+		}
+		#tables{
+			padding-top: 5%;
+		}
+		.segment{
+			background: white;
+    		content: ".";
+    		display: inline-block;
+    		text-indent: -2000px;
+    		vertical-align: top;
+		}
+		.segment-losses{
+			background: red;
+			
+		}
+		.segment-wins{
+			background: #A9CF54;
+			
+		}
+		#graph{
+			width: 1000px;
+		}
+		#favorite{
+			height: 40px;
+			border: solid 1px white;
+		}
+		#matches{
+			color: white;
+		}
+		#succes{
+			color: white;
+			text-decoration: none;
+		}
+		#name{
+			font-size: 2em;
+			color: white;
+		}
+		#flag{
+			font-size: 15px
+		}
+		#sixwins{
+			width: 40px;
+			height: {{sw}};
+		}
+		#sixloses{
+			width: 40px;
+			height: {{sl}};
+		}
+	</style>
+	<body>
+		<div id="b">
+			<navigation></navigation>
+		</div>
+		<div class="container-fluid" id="data">
+			<div class="container-fluid" id = "con">
+				<div class="row" style=" background:#2E3740">
+					<div class="col-sm col-md col-lg" id="prof_img">
+						<div class="row">
+							<div class="col-lg col-sm col-md ">
+								<img src="{{ data.avatar }}" id="avatar">
+							</div>
+							<div class="col-lg col-sm col-md ">
+								<div class="row">
+									<div class="col-lg col-sm col-md ">
+										<a id="name"><span class="flag-icon flag-icon-{{data.region}}" id="flag"></span> {{data.name}}</a>
+									</div>
+									<div class="col-lg col-sm col-md ">
+										<span style="color: white">{{data.rank}}</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg col-sm col-md " style="padding-left: 15%">
+										<h4 style="color: rgba(255,255,255,0.6);">Support</h3>
+									</div>
+									<div class="col-lg col-sm col-md ">
+										
+									</div>
+								</div>
+								<div class="row">
+									{% for i in heroes %}
+									<div class="col-lg-2 col-sm-3 col-md-3">
+										<i class="d2mh hero-{{i.id}}"></i>
+									</div>
+									{% endfor %}								
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg col-sm col-md">
+						<div class="row">
+							<div class="col-lg col-sm col-md"></div>
+							<div class="col-lg-5 col-sm col-md">
+								<p style="color: rgba(255,255,255,0.6);">
+									Statistics:
+								</p>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 2%">
+							<div class="col-lg-6 col-sm col-md"></div>
+							<div class="col-lg-2 col-sm col-md">
+								<span id="wl" style="color: #A9CF54">
+									32
+								</span>
+								<span id="wl"> - </span>
+								<span id="wl" style="color: #C23C2A">
+									32
+								</span>
+								<p style="color: rgba(255,255,255,0.6)"> Matches </p>
+							</div>
+							<div class="col-lg col-sm col-md">
+								<span style="color: white"> 80% </span>
+								<p style="color: rgba(255,255,255,0.6)"> Winrate </p>
+							</div>								
+						</div>
+						<div class="row" style="padding-top: 2%; padding-left: 50%">
+							{% if exist %}
+							<div class="col-lg col-sm col-md ">
+								<button type="button" class="btn btn-danger">
+									Invite
+								</button>
+							</div>
+							{% else %}
+							<div class="col-lg col-sm col-md ">
+								<button type="button" class="btn btn-danger" disabled>
+									<span data-toggle="tooltip" data-placement="bottom" title="We don't have info about this person">Invite</span>
+								</button>
+							</div>	
+							{% endif %}
+						</div>	
+
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="container-fluid" id="tables">
+			<div class="container-fluid" style="background:#2E3740">
+				<div class="row" style="padding-top: 3%">
+					<div class="col-lg- col-sm col-md" style="padding-left: 1%">
+						<h3 id="matches">Last matches:</h3>
+						<table class="table table-hover table-striped table-dark" id="games">
+							<thead>
+						    	<tr>
+						      		<th scope="col">Hero <span hidden="true">aaaaaaaaaaaaaaaa</span></th>
+						      		<th scope="col">Result <span hidden="true">aaaaaaaaaaaaaaaa</span></th>
+						      		<th scope="col">Duration</th>
+						      		<th scope="col">KDA</th>
+						    	</tr>
+						    </thead>
+						    <tbody>
+						    	{% for ash in matches %}
+									    	<tr onclick="document.location = 'http://127.0.0.1:8090/match/{{ash.id}}'">
+											    <td><i class = "d2mh hero-{{ ash.hero_id }}"></td>
+											    {% if ash.win == 1 %}
+											    	<td style="color: #A9CF54">Win</td>
+											    {% else %}
+											    	<td style="color: #C23C2A">Lose</td>
+											    {% endif %}
+											    <td>{{ ash.duration }}</td>
+											    <td><span style="color:#A9CF54">{{ ash.kills }}</span>/<span style="color:#C23C2A">{{ ash.deaths }}</span>/<span style="color:rgba(255,255,255,0.6)">{{ ash.assists }}</span></td>
+										    </tr>
+							    {% endfor %}						    							    							    							    
+						  	</tbody>
+						</table>
+						<div class="col-lg- col-sm col-md" style="padding-left: 1%">
+							<h3 id="matches">Invites:</h3>
+							{% if names != 'No invites!' %}
+							<table class="table table-bordered table-striped table-dark" id="games">
+								<thead>
+						    	<tr>
+						      		<th scope="col">Team <span hidden="true">aaaaaaaaaaaaaaaa</span></th>
+						      		<th scope="col">Date <span hidden="true">aaaaaaaaaaaaaaaa</span></th>
+						      		<th scope="col"></th>
+						      		<th scope="col"></th>
+						    	</tr>
+						    	</thead>
+						    	<tbody>
+							    		{% for team in names %}
+							    		<tr>
+									    	<td><img id="hero" src="https://upload.wikimedia.org/wikipedia/ru/thumb/3/36/Virtus.pro_cveta_megafona_logo.png/240px-Virtus.pro_cveta_megafona_logo.png"><span style="padding-left: 10px">{{ team }}</span></td>
+									    	<td >21.12.2028</td>
+									    	<form action="http://127.0.0.1:8090/add/{{team}}/{{name}}/succes" >
+										    	<td>
+													<input type="submit" class="btn btn-success" id='succes' value='succes'>									    		
+										    	</td>
+										    </form>
+										    <form action="http://127.0.0.1:8090/add/{{team}}/{{name}}/refuse" >
+										    	<td>
+													<input type="submit" class="btn btn-danger" id='Unsucces' value='Refusal'>									    		
+										    	</td>
+									    	</form>
+								    	</tr>
+								    	{% endfor %}
+							    </tbody>									
+							</table>
+							{% else %}
+							<span>No invites!</span>
+							{% endif %}
+						</div>
+					</div>
+					<div class="col-md-4">
+						<h3 id="matches">Last six games graph:</h3>
+						<div id="chart" style="color: white">
+							<table class="table table-bordered table-striped table-dark" id="games">
+								<tbody>
+									<tr>
+										<td>
+											<div class="segment segment-wins" style="background: #A9CF54; height:50px; width: 25px"></div>
+											<div class="segment segment-losses" style="background: red; height:10px; width: 25px"></div>
+										</td>
+										<td>
+											<div class="segment segment-wins" style="width: 25px; height: 25px">
+											</div>
+											<div class="segment segment-losses" style="width: 25px; height: 25px">
+											</div>
+										</td>	
+									</tr>
+								</tbody>	
+							</table>	
+						</div>				
+					</div>
+					<div class="col-sm" id="graph">
+						<h3 id="matches">Best heroes:</h3>
+						<table class="table table-hover table-striped table-dark" id="games">
+							<thead>
+						    	<tr>
+						      		<th scope="col">Hero <span hidden="true">aaaaaaaaaaaaaaaa</span></th>
+						      		<th scope="col">Wins + <span hidden="true">aaaaaaaaaaaaaaaa</span></th>
+							  		<th scope="col">Losses -</th>
+						      		<th scope="col">Winrate %</th>
+						    	</tr>
+					    	</thead>
+					    	<tbody>
+					    		{% for hero in heroes%}
+						    	<tr>
+								    <td><i class = 'd2mh hero-{{ hero.id }}'></td>
+								    <td style="color: #A9CF54"> {{ hero.win }}</td>
+								    <td style="color:#C23C2A"> {{ hero.lose }} </td>
+								    <td>{{ hero.wr }}% <p><div class="segment segment-wins"></div> <div class="segment segment-losses"></div></p></td>
+							    </tr>
+							    {% endfor %}						    							    							    							    
+						  	</tbody>
+						</table>
+					</div>				
+				</div>
+			</div>
+		</div>
+	<script src="{% static 'main.js' %}"></script>	
+	</body>
+</html>
